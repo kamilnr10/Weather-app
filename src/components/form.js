@@ -1,12 +1,17 @@
 import React from "react";
 
-const Form = props => {
+const SearchCity = props => {
   return (
     <form onSubmit={props.getWeather}>
-      <input type="text" placeholder="Wpisz miasto..." name="city" />
+      <input
+        type="text"
+        placeholder="Wpisz miasto..."
+        value={props.value}
+        onChange={props.onChange}
+      />
       <button>Sprawdź pogodę</button>
     </form>
   );
 };
 
-export default Form;
+export default SearchCity;
