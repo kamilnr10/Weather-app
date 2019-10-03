@@ -7,7 +7,7 @@ const SearchCity = props => {
         type="text"
         placeholder="Wpisz miasto..."
         value={props.value}
-        onChange={props.onChange}
+        onChange={props.setInputValue}
         required={true}
       />
       <button
