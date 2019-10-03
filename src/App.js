@@ -26,38 +26,46 @@ class App extends React.Component {
     this.setInputValue = this.setInputValue.bind(this);
   }
 
-  setInputValue(event) {
-    // this.setState({
-    console.log(event.target.value);
-    // value: event.target.value
-    // });
-  }
+  setInputValue = event => {
+    this.setState({
+      value: event.target.value
+    });
+  };
 
-  getWeather(city) {
+  getWeather = (city, event) => {
+    event.preventDefault();
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ff61fb98da365398f633294312b2e812f`
       )
-      .then((response)=>{
+      .then(response => {
         console.log(response);
         if (response.status === 200) {
-        this.setState({
-        // value: ,
-        // latitude: data.coord.lat,
-        // longtitude: data.coord.lon,
-        // temp: response.data.main.temp,
-        // humidity: data.main.humidity,
-        // pressure: data.main.pressure,
-        // temp_min: data.main.temp_min,
-        // temp_max: data.main.temp_max,
-        // wind: data.wind.speed
-        });
-  })
+          this.setState({
+            // value: ,
+            // latitude: data.coord.lat,
+            // longtitude: data.coord.lon,
+            // temp: data.main.temp,
+            humidity: response.data.main.humidity,
+            pressure: response.data.main.pressure,
+            temp_min: response.data.main.temp_min,
+            temp_max: response.data.main.temp_max
+            // wind: data.wind.speed
+          });
+        } else {
+        }
+      });
+  };
+
   render() {
     return (
       <div className="App">
         <Title />
-        <SearchCity loadWeather={this.getWeather} />
+        <SearchCity
+          value={this.state.value}
+          inputValue={this.setInputValue}
+          loadWeather={this.getWeather}
+        />
         <ViewWeather />
       </div>
     );

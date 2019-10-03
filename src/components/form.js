@@ -2,22 +2,15 @@ import React from "react";
 
 const SearchCity = props => {
   return (
-    <form onSubmit={props.getWeather}>
+    <form onSubmit={props.loadWeather}>
       <input
         type="text"
         placeholder="Wpisz miasto..."
         value={props.value}
-        onChange={props.setInputValue}
+        onChange={props.inputValue}
         required={true}
       />
-      <button
-        onClick={event => {
-          event.preventDefault();
-          console.log("kliknięto przycisk");
-        }}
-      >
-        Sprawdź pogodę
-      </button>
+      <button>Sprawdź pogodę</button>
     </form>
   );
 };
