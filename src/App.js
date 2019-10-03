@@ -32,8 +32,7 @@ class App extends React.Component {
     });
   };
 
-  getWeather = (city, event) => {
-    event.preventDefault();
+  getWeather(city) {
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ff61fb98da365398f633294312b2e812f`
@@ -55,7 +54,7 @@ class App extends React.Component {
         } else {
         }
       });
-  };
+  }
 
   render() {
     return (

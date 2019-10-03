@@ -10,7 +10,13 @@ const SearchCity = props => {
         onChange={props.inputValue}
         required={true}
       />
-      <button>Sprawdź pogodę</button>
+      <button
+        onClick={event => {
+          event.preventDefault();
+        }}
+      >
+        Sprawdź pogodę
+      </button>
     </form>
   );
 };
