@@ -7,16 +7,10 @@ const SearchCity = props => {
         type="text"
         placeholder="Wpisz miasto..."
         value={props.value}
-        onChange={props.inputValue}
+        onChange={props.inChange}
         required={true}
       />
-      <button
-        onClick={event => {
-          event.preventDefault();
-        }}
-      >
-        Sprawdź pogodę
-      </button>
+      <button>Sprawdź pogodę</button>
     </form>
   );
 };
