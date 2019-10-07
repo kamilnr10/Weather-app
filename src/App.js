@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 import Title from "./components/title";
 import SearchCity from "./components/form";
-import ViewWeather from "./components/weather";
+import Weather from "./components/weather";
 
 // ApiKey f61fb98da365398f633294312b2e812f
 
@@ -12,6 +12,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       value: "",
+      city: "",
+      country: "",
       latitude: "",
       longtitude: "",
       temp: "",
@@ -37,33 +39,30 @@ class App extends React.Component {
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=a229b7d1f6ac2bfc483e9f7f9024bfdd&units=metric`
-        //     // `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=501d5692844c133e7d7fee8a2f2c5250`
       )
       .then(
         response => {
           console.log(response);
+          if (response.status === 200) {
+            this.setState({
+              city: response.data.name,
+              country: response.data.sys.country,
+              latitude: response.data.coord.lat,
+              longtitude: response.data.coord.lon,
+              temp: response.data.main.temp,
+              humidity: response.data.main.humidity,
+              pressure: response.data.main.pressure,
+              tempMin: response.data.main.temp_min,
+              tempMax: response.data.main.temp_max,
+              wind: response.data.wind.speed,
+              imBusy: false
+            });
+          }
         },
         error => {
           console.log(error);
         }
       );
-    // .then(({ response }) => {
-    //   console.log(response);
-
-    //   if (response.status === 200) {
-    //     this.setState(weatherCity => ({
-    //       name: response.weatherCity.value,
-    //       latitude: response.data.coord.lat,
-    //       longtitude: response.data.coord.lon,
-    //       temp: response.data.main.temp,
-    //       humidity: response.data.main.humidity,
-    //       pressure: response.data.main.pressure,
-    //       temp_min: response.data.main.temp_min,
-    //       temp_max: response.data.main.temp_max,
-    //       wind: response.data.wind.speed
-    //     }));
-    //   }
-    // });
   }
 
   render() {
@@ -75,7 +74,18 @@ class App extends React.Component {
           inChange={this.setInputValue}
           loadWeather={this.getWeather}
         />
-        <ViewWeather weatherObj={this.state} />
+        <Weather
+          city={this.state.city}
+          country={this.state.country}
+          temp={this.state.temp}
+          latitude={this.state.latitude}
+          longtitude={this.state.longtitude}
+          humidity={this.state.humidity}
+          pressure={this.state.pressure}
+          tempMin={this.state.tempMin}
+          tempMax={this.state.tempMax}
+          wind={this.state.wind}
+        />
       </div>
     );
   }
