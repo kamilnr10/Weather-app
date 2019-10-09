@@ -78,26 +78,28 @@ class App extends React.Component {
     } else {
       return (
         <div className="App">
-          <Title />
-          <SearchCity
-            value={this.state.value}
-            inChange={this.setInputValue}
-            loadWeather={this.getWeather}
-          />
-          <Weather
-            city={this.state.city}
-            country={this.state.country}
-            description={this.state.description}
-            icon={this.state.icon}
-            temp={this.state.temp}
-            latitude={this.state.latitude}
-            longtitude={this.state.longtitude}
-            humidity={this.state.humidity}
-            pressure={this.state.pressure}
-            tempMin={this.state.tempMin}
-            tempMax={this.state.tempMax}
-            wind={this.state.wind}
-          />
+          <div className="container">
+            <Title />
+            <SearchCity
+              value={this.state.value}
+              inChange={this.setInputValue}
+              loadWeather={this.getWeather}
+            />
+            <Weather
+              city={this.state.city}
+              country={this.state.country}
+              description={this.state.description}
+              icon={this.state.icon}
+              temp={this.state.temp}
+              latitude={this.state.latitude}
+              longtitude={this.state.longtitude}
+              humidity={this.state.humidity}
+              pressure={this.state.pressure}
+              tempMin={this.state.tempMin}
+              tempMax={this.state.tempMax}
+              wind={this.state.wind}
+            />
+          </div>
         </div>
       );
     }
