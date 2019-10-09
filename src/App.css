@@ -1,3 +1,12 @@
+/* COLORS
+#E27D60
+#85D4CB
+#E8A87C
+#C38D9E
+#41B3A3
+
+*/
+
 .App {
   text-align: center;
 }
@@ -18,10 +27,78 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #85d4cb;
 }
 
 body {
-  background-color: #41b3a3;
+  margin: 0;
+  width: 100%;
   height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h1 {
+  margin: 20px 0 20px;
+  color: white;
+  font-size: 50px;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+}
+
+.search {
+  border: none;
+  background: #404040;
+  color: #ffffff !important;
+  font-weight: 100;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+}
+
+.search:hover {
+  color: #404040;
+  font-weight: 700;
+  letter-spacing: 3px;
+  background: none;
+  box-shadow: 10px 10px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
+}
+
+.wrapper {
+}
+
+.box {
+  width: 55%;
+  margin: 0 auto;
+  padding: 0 5px 0 5px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+  border-radius: 10px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+i {
+  font-size: 15px;
+}
+
+span {
+  font-size: 15px;
 }

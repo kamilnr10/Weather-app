@@ -17,7 +17,8 @@ const SearchCity = props => {
         onChange={props.inChange}
         required={true}
       />
-      <button className="btn btn-warning">Sprawdź pogodę</button>
+      <button className="search">Sprawdź pogodę</button>
+      <hr></hr>
     </form>
   );
 };

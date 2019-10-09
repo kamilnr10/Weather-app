@@ -78,6 +78,7 @@ class App extends React.Component {
     } else {
       return (
         <div className="App">
+          <div className="bg-image"></div>
           <div className="container">
             <Title />
             <SearchCity
@@ -85,20 +86,22 @@ class App extends React.Component {
               inChange={this.setInputValue}
               loadWeather={this.getWeather}
             />
-            <Weather
-              city={this.state.city}
-              country={this.state.country}
-              description={this.state.description}
-              icon={this.state.icon}
-              temp={this.state.temp}
-              latitude={this.state.latitude}
-              longtitude={this.state.longtitude}
-              humidity={this.state.humidity}
-              pressure={this.state.pressure}
-              tempMin={this.state.tempMin}
-              tempMax={this.state.tempMax}
-              wind={this.state.wind}
-            />
+            <div className="wrapper">
+              <Weather
+                city={this.state.city}
+                country={this.state.country}
+                description={this.state.description}
+                icon={this.state.icon}
+                temp={this.state.temp}
+                latitude={this.state.latitude}
+                longtitude={this.state.longtitude}
+                humidity={this.state.humidity}
+                pressure={this.state.pressure}
+                tempMin={this.state.tempMin}
+                tempMax={this.state.tempMax}
+                wind={this.state.wind}
+              />
+            </div>
           </div>
         </div>
       );
