@@ -4,6 +4,7 @@ import axios from "axios";
 import Title from "./components/title";
 import SearchCity from "./components/form";
 import Weather from "./components/weather";
+import LoadingPage from "./components/loading";
 
 // ApiKey f61fb98da365398f633294312b2e812f
 
@@ -14,6 +15,8 @@ class App extends React.Component {
       value: "",
       city: "",
       country: "",
+      description: "",
+      icons: "",
       latitude: "",
       longtitude: "",
       temp: "",
@@ -22,7 +25,7 @@ class App extends React.Component {
       tempMin: "",
       tempMax: "",
       wind: "",
-      imBusy: true
+      imBusy: false
     };
     this.getWeather = this.getWeather.bind(this);
     this.setInputValue = this.setInputValue.bind(this);
@@ -47,6 +50,8 @@ class App extends React.Component {
             this.setState({
               city: response.data.name,
               country: response.data.sys.country,
+              description: response.data.weather[0].description,
+              icon: response.data.weather[0].icon,
               latitude: response.data.coord.lat,
               longtitude: response.data.coord.lon,
               temp: response.data.main.temp,
@@ -66,28 +71,36 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <Title />
-        <SearchCity
-          value={this.state.value}
-          inChange={this.setInputValue}
-          loadWeather={this.getWeather}
-        />
-        <Weather
-          city={this.state.city}
-          country={this.state.country}
-          temp={this.state.temp}
-          latitude={this.state.latitude}
-          longtitude={this.state.longtitude}
-          humidity={this.state.humidity}
-          pressure={this.state.pressure}
-          tempMin={this.state.tempMin}
-          tempMax={this.state.tempMax}
-          wind={this.state.wind}
-        />
-      </div>
-    );
+    const { imBusy } = this.state;
+
+    if (imBusy === true) {
+      return <LoadingPage />;
+    } else {
+      return (
+        <div className="App">
+          <Title />
+          <SearchCity
+            value={this.state.value}
+            inChange={this.setInputValue}
+            loadWeather={this.getWeather}
+          />
+          <Weather
+            city={this.state.city}
+            country={this.state.country}
+            description={this.state.description}
+            icon={this.state.icon}
+            temp={this.state.temp}
+            latitude={this.state.latitude}
+            longtitude={this.state.longtitude}
+            humidity={this.state.humidity}
+            pressure={this.state.pressure}
+            tempMin={this.state.tempMin}
+            tempMax={this.state.tempMax}
+            wind={this.state.wind}
+          />
+        </div>
+      );
+    }
   }
 }
 
