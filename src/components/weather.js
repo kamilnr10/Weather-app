@@ -64,7 +64,7 @@ const Weather = props => {
         <span>&#176;C</span> <i class="fas fa-temperature-high"></i>
       </h5>
       <h5>
-        Wiatr: {props.wind} <span>km/h</span>
+        Wiatr: {props.wind} <span>km/h </span>
         <i class="fas fa-wind"></i>
       </h5>
     </div>
