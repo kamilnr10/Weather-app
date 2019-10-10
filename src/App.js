@@ -25,7 +25,8 @@ class App extends React.Component {
       tempMin: "",
       tempMax: "",
       wind: "",
-      imBusy: false
+      imBusy: false,
+      error: false
     };
     this.getWeather = this.getWeather.bind(this);
     this.setInputValue = this.setInputValue.bind(this);
@@ -70,15 +71,20 @@ class App extends React.Component {
         },
         error => {
           console.log(error);
+          this.setState({
+            error: true
+          });
         }
       );
   }
 
   render() {
-    const { imBusy } = this.state;
+    const { imBusy, error } = this.state;
 
     if (imBusy === true) {
       return <LoadingPage />;
+    } else if (error === true) {
+      return <p>Podaj porawną nazwę miasta</p>;
     } else {
       return (
         <div className="App">
