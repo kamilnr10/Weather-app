@@ -1,6 +1,9 @@
 import React from "react";
 
 const Weather = props => {
+  if (props.city === "") {
+    return null;
+  }
   return (
     <div className="box info">
       <div className="row">

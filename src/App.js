@@ -41,7 +41,7 @@ class App extends React.Component {
     event.preventDefault();
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=a229b7d1f6ac2bfc483e9f7f9024bfdd&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=a229b7d1f6ac2bfc483e9f7f9024bfdd&units=metric`
       )
       .then(
         response => {
@@ -62,6 +62,10 @@ class App extends React.Component {
               wind: response.data.wind.speed,
               imBusy: false
             });
+          } else {
+            this.setState({
+              imBusy: true
+            });
           }
         },
         error => {
@@ -78,7 +82,6 @@ class App extends React.Component {
     } else {
       return (
         <div className="App">
-          <div className="bg-image"></div>
           <div className="container">
             <Title />
             <SearchCity
