@@ -107,6 +107,7 @@ class App extends React.Component {
                 tempMin={this.state.tempMin}
                 tempMax={this.state.tempMax}
                 wind={this.state.wind}
+                error={this.state.error}
               />
             </div>
           </div>
