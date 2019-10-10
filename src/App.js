@@ -40,6 +40,9 @@ class App extends React.Component {
 
   getWeather(event) {
     event.preventDefault();
+    this.setState({
+      imBusy: true
+    });
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=a229b7d1f6ac2bfc483e9f7f9024bfdd&units=metric`
@@ -61,7 +64,8 @@ class App extends React.Component {
               tempMin: response.data.main.temp_min,
               tempMax: response.data.main.temp_max,
               wind: response.data.wind.speed,
-              imBusy: false
+              imBusy: false,
+              error: false
             });
           } else {
             this.setState({
