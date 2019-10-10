@@ -76,6 +76,7 @@ class App extends React.Component {
         error => {
           console.log(error);
           this.setState({
+            imBusy: false,
             error: true
           });
         }
