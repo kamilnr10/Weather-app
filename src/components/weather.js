@@ -3,12 +3,8 @@ import React from "react";
 const Weather = props => {
   if (props.city === "") {
     return null;
-  } else if (props.city === false) {
-    return (
-      <div>
-        <h2>Something goes wrong</h2>
-      </div>
-    );
+  } else if (props.error === true) {
+    return <p>Podaj porawną nazwę miasta</p>;
   } else
     return (
       <div className="box info">

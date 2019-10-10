@@ -79,12 +79,10 @@ class App extends React.Component {
   }
 
   render() {
-    const { imBusy, error } = this.state;
+    const { imBusy } = this.state;
 
     if (imBusy === true) {
       return <LoadingPage />;
-    } else if (error === true) {
-      return <p>Podaj porawną nazwę miasta</p>;
     } else {
       return (
         <div className="App">
